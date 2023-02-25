@@ -2,6 +2,7 @@ package util;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
 import java.security.Key;
 import java.util.Date;
@@ -30,7 +31,7 @@ public class JwtTokenFactory {
                 .setExpiration(expireAt)
                 .setIssuer("")
                 .setClaims(null)
-                .signWith(, SignatureAlgorithm.HS256).toString();
+                .signWith(Keys.secretKeyFor(SignatureAlgorithm.HS256), SignatureAlgorithm.HS256).toString();
         return token;
     }
 
