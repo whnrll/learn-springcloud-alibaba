@@ -1,0 +1,5 @@
+### 获取服务列表
+GET http://localhost:8000/learn-gateway/gateway/serviceInstances
+Accept: application/json
+
+###
