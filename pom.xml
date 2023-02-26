@@ -14,6 +14,7 @@
         <module>learn-jwt-token-starter</module>
         <module>learn-springboot</module>
         <module>learn-springboot-admin</module>
+        <module>learn-authority-center</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -33,7 +34,8 @@
         <spring-cloud-alibaba.version>2.2.4.RELEASE</spring-cloud-alibaba.version>
         <junit-bom.version>5.9.2</junit-bom.version>
 
-        <fastjson.version>1.2.78</fastjson.version>
+        <mysql-connector-java.version>8.0.12</mysql-connector-java.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <jsonwebtoken.version>0.10.5</jsonwebtoken.version>
         <hutool-all.version>5.8.11</hutool-all.version>
         <commons-lang3.version>3.11</commons-lang3.version>
@@ -147,6 +149,13 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- MySql 连接驱动 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
             </dependency>
 
         </dependencies>
