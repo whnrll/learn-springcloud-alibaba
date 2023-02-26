@@ -36,10 +36,7 @@ public class TokenParseUtil {
         }
 
         // 返回 Token 中保存的用户信息
-        return JSON.parseObject(
-                body.get(CommonConstant.JWT_USER_INFO_KEY).toString(),
-                LoginUserInfo.class
-        );
+        return JSON.parseObject(body.get(CommonConstant.JWT_USER_INFO_KEY).toString(), LoginUserInfo.class);
     }
 
     /**
@@ -55,9 +52,8 @@ public class TokenParseUtil {
      */
     private static PublicKey getPublicKey() throws Exception {
 
-        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(
-                new BASE64Decoder().decodeBuffer(CommonConstant.PUBLIC_KEY)
-        );
+        X509EncodedKeySpec keySpec =
+            new X509EncodedKeySpec(new BASE64Decoder().decodeBuffer(CommonConstant.PUBLIC_KEY));
         return KeyFactory.getInstance("RSA").generatePublic(keySpec);
     }
 }

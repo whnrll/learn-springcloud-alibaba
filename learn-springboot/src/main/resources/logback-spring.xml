@@ -6,8 +6,10 @@
 <!-- scanPeriod: 设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当 scan 为 true 时，此属性生效。默认的时间间隔为1分钟。-->
 <!-- debug: 当此属性设置为 true 时，将打印出 logback 内部日志信息，实时查看 logback 运行状态。默认值为 false。-->
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-    <property name="app_name" value="LearnSpringBoot"/>
-    <property name="log_path" value="${user.dir}/learn-springboot/log"/>
+    <!-- 使用springProperty标签引用application.yml的属性 -->
+    <springProperty scope="context" name="log_path" source="log.path"/>
+    <springProperty scope="context" name="app_name" source="spring.application.name"/>
+
     <contextName>${app_name}</contextName>
     <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
 

@@ -13,6 +13,7 @@
         <module>learn-gateway</module>
         <module>learn-jwt-token-starter</module>
         <module>learn-springboot</module>
+        <module>learn-springboot-admin</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -34,7 +35,7 @@
 
         <fastjson.version>1.2.78</fastjson.version>
         <jsonwebtoken.version>0.10.5</jsonwebtoken.version>
-        <hutool-all.version>5.6.0</hutool-all.version>
+        <hutool-all.version>5.8.11</hutool-all.version>
         <commons-lang3.version>3.11</commons-lang3.version>
         <commons-collections4.version>4.4</commons-collections4.version>
     </properties>
