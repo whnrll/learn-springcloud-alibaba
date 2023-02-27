@@ -8,7 +8,7 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <!-- 使用springProperty标签引用application.yml的属性 -->
     <springProperty scope="context" name="app_name" source="spring.application.name"/>
-    <property name="log_path" value="${user.dir}/${app_name}/log"/>
+    <property name="log_path" value="${user.dir}/log"/>
 
     <contextName>${app_name}</contextName>
     <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
@@ -74,11 +74,11 @@
             <fileNamePattern>${log_path}/debug/${app_name}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- each file should be at most 100MB, keep 60 days worth of history, but at most 20GB -->
             <!--单个日志文件最大100M，到了这个值，就会再创建一个日志文件，日志文件的名字最后+1-->
-            <maxFileSize>100MB</maxFileSize>
+            <maxFileSize>1MB</maxFileSize>
             <!-- 可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件。注意，删除旧文件是，那些为了归档而创建的目录也会被删除。-->
             <maxHistory>30</maxHistory>
             <!--所有的日志文件最大20G，超过就会删除旧的日志-->
-            <totalSizeCap>20GB</totalSizeCap>
+            <totalSizeCap>10MB</totalSizeCap>
         </rollingPolicy>
         <!--
             此日志文件只记录debug级别的
@@ -92,6 +92,27 @@
         -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>debug</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 时间滚动输出 level为 DEBUG 日志 -->
+    <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log_path}/info/${app_name}.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>${pattern-file}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log_path}/info/${app_name}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>1MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>10MB</totalSizeCap>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
@@ -113,9 +134,9 @@
     <!-- logger 的 appender 根据参数 additivity 决定是否向上级logger传递打印信息。-->
     <!-- logger 的级别是其自身定义的级别，和 root 的级别没什么关系。 -->
     <logger name="org.example" level="debug" additivity="false">
-        <!--        <appender-ref ref="CONSOLE" />-->
         <appender-ref ref="CONSOLE-WITH-COLOR"/>
         <appender-ref ref="DEBUG_FILE"/>
+        <appender-ref ref="INFO_FILE"/>
     </logger>
 
     <!-- 关闭指定包的日志输出 -->
