@@ -4,14 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 /**
- * <h1>授权中心鉴权之后给客户端的 Token</h1>
- * */
+ * 描述：jwt令牌
+ *
+ * @author xutao
+ * @Date 2023-02-28 21:07:53
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class JwtToken {
 
-    /** JWT */
+    /**
+     * JWT
+     */
     private String token;
 }

@@ -3,6 +3,12 @@ package configuration;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+/**
+ * 描述：jwt客户端属性
+ *
+ * @author xutao
+ * @Date 2023-02-28 21:16:23
+ */
 @Data
 @ConfigurationProperties(prefix = "jwt.authentication.client")
 public class JwtClientProperties {

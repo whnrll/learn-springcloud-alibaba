@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-configuration.JwtAuthClientAutoConfiguration
+configuration.JwtAuthClientAutoConfiguration,\
+configuration.JwtAuthServerAutoConfiguration

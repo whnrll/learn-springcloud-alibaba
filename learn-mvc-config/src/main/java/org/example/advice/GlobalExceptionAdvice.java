@@ -1,11 +1,13 @@
 package org.example.advice;
 
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
+
+import org.example.exception.BusinessException;
 import org.example.vo.CommonResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * <h2>全局异常捕获处理</h2>
@@ -14,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 @RestControllerAdvice
 public class GlobalExceptionAdvice {
 
-    @ExceptionHandler(value = Exception.class)
-    public CommonResponse<String> handlerCommerceException(
+    @ExceptionHandler(value = BusinessException.class)
+    public CommonResponse<String> handlerBusinessException(
             HttpServletRequest req, Exception ex
     ) {
 

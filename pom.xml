@@ -15,6 +15,10 @@
         <module>learn-springboot</module>
         <module>learn-springboot-admin</module>
         <module>learn-authority-center</module>
+        <module>learn-spring-security</module>
+        <module>learn-oauth2-client</module>
+        <module>learn-oauth2-authorization</module>
+        <module>learn-oauth2-resource</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -34,6 +38,8 @@
         <spring-cloud-alibaba.version>2.2.4.RELEASE</spring-cloud-alibaba.version>
         <junit-bom.version>5.9.2</junit-bom.version>
 
+        <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
+
         <mysql-connector-java.version>8.0.12</mysql-connector-java.version>
         <fastjson.version>1.2.83</fastjson.version>
         <jsonwebtoken.version>0.10.5</jsonwebtoken.version>
@@ -49,7 +55,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.18</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -66,6 +71,18 @@
     <!-- 项目依赖管理 父项目只是声明依赖，子项目需要写明需要的依赖(可以省略版本信息) -->
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>learn-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>learn-mvc-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
             <!-- spring cloud 依赖 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -164,6 +181,24 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector-java.version}</version>
             </dependency>
+
+            <!-- swagger 3.0 生成 API 文档-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

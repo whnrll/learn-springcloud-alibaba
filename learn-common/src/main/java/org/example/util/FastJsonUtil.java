@@ -9,6 +9,12 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 描述：FastJson 序列化工具
+ *
+ * @author xutao
+ * @Date 2023-02-28 21:04:55
+ */
 @Slf4j
 public class FastJsonUtil {
 

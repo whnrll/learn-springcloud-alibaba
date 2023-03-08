@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cn.hutool.core.codec.Base64;
-import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -32,8 +31,8 @@ public class CryptoUtil {
         keyPairGenerator.initialize(keySize);
 
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
-        RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
-        RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+        RSAPublicKey publicKey = (RSAPublicKey)keyPair.getPublic();
+        RSAPrivateKey privateKey = (RSAPrivateKey)keyPair.getPrivate();
 
         String publicKeyStr = Base64.encode(publicKey.getEncoded());
         String privateKeyStr = Base64.encode(privateKey.getEncoded());
@@ -41,7 +40,7 @@ public class CryptoUtil {
         Map<String, String> map = new HashMap<>(2);
         map.put("publicKeyStr", publicKeyStr);
         map.put("privateKeyStr", privateKeyStr);
-        return JSONUtil.toJsonStr(map);
+        return JacksonUtil.formatSerialize(map);
     }
 
 }
