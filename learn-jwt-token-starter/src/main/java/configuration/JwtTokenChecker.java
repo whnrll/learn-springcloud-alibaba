@@ -12,10 +12,11 @@ public class JwtTokenChecker implements TokenChecker {
     }
 
     @Override
-    public void verify(String token) throws Exception {
+    public boolean verify(String token) throws Exception {
         RawAccessToken rawAccessToken = new RawAccessToken(token);
         String issuer = rawAccessToken.getIssuer();
         String cipher = userStore.getCipher(issuer);
         rawAccessToken.verify(cipher);
+        return false;
     }
 }

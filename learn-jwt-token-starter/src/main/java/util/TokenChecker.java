@@ -1,5 +1,5 @@
 package util;
 
 public interface TokenChecker {
-    void verify(String token) throws Exception;
+    boolean verify(String token) throws Exception;
 }
