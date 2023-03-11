@@ -19,6 +19,7 @@
         <module>learn-oauth2-client</module>
         <module>learn-oauth2-authorization</module>
         <module>learn-oauth2-resource</module>
+        <module>starter-elastic-job</module>
     </modules>
 
     <packaging>pom</packaging>
