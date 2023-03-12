@@ -1,0 +1,25 @@
+编译指令
+gradlew :spring-oxm:compileTestJava
+
+## 设置代理
+```
+maven {
+        allowInsecureProtocol = true
+        url 'http://maven.aliyun.com/nexus/content/groups/public'
+    }
+maven { url 'https://maven.aliyun.com/repository/google' }
+maven { url 'https://maven.aliyun.com/repository/jcenter' }
+maven { url 'https://maven.aliyun.com/nexus/content/groups/public/'}
+maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter'}
+maven { url 'https://dl.google.com/dl/android/maven2/' }
+```
+
+## gradle高版本会出现maven仓库地址不是https安全连接便会报错的问题
+`maven 设置 allowInsecureProtocol = true `
+```
+
+maven {
+    allowInsecureProtocol = true
+    url 'http://maven.aliyun.com/nexus/content/groups/public'
+}
+```
