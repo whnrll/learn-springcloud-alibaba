@@ -4,7 +4,7 @@ spring:
 
   # 使用 pom 中定义的属性替换 profiles.active
   profiles:
-    active: @profiles.active@
+    active: "@profiles.active@"
 
 
   # http client pool 配置

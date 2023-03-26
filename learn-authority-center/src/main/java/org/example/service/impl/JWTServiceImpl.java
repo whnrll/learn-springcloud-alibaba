@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Base64;
 import java.util.Date;
 import java.util.UUID;
 
@@ -25,7 +26,6 @@ import com.alibaba.fastjson.JSON;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
-import sun.misc.BASE64Decoder;
 
 @Slf4j
 @Service
@@ -101,7 +101,7 @@ public class JWTServiceImpl implements IJwtService {
      */
     private PrivateKey getPrivateKey() throws Exception {
         PKCS8EncodedKeySpec priPKCS8 =
-            new PKCS8EncodedKeySpec(new BASE64Decoder().decodeBuffer(AuthorityConstant.PRIVATE_KEY));
+            new PKCS8EncodedKeySpec(Base64.getDecoder().decode(AuthorityConstant.PRIVATE_KEY));
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         return keyFactory.generatePrivate(priPKCS8);
     }

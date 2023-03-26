@@ -1,17 +1,19 @@
 package org.example.util;
 
-import com.alibaba.fastjson.JSON;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import org.example.constant.CommonConstant;
-import org.example.vo.LoginUserInfo;
-import sun.misc.BASE64Decoder;
-
 import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 import java.util.Calendar;
+
+import org.example.constant.CommonConstant;
+import org.example.vo.LoginUserInfo;
+
+import com.alibaba.fastjson.JSON;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
 
 /**
  * <h1>JWT Token 解析工具类</h1>
@@ -52,8 +54,7 @@ public class TokenParseUtil {
      */
     private static PublicKey getPublicKey() throws Exception {
 
-        X509EncodedKeySpec keySpec =
-            new X509EncodedKeySpec(new BASE64Decoder().decodeBuffer(CommonConstant.PUBLIC_KEY));
+        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(CommonConstant.PUBLIC_KEY));
         return KeyFactory.getInstance("RSA").generatePublic(keySpec);
     }
 }
