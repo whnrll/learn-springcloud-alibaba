@@ -24,7 +24,7 @@ public class FileTest {
 
     @Test
     public void modifyFileName() {
-        String srcDir = "G:\\下载2\\lagou- 云原生微服务架构实战精讲";
+        String srcDir = "D:\\下载\\15、Java高性能、高并发、高可用的分布式架构系统开发课程 2022 完结";
         FileUtil.modifyFileName(srcDir, "【.*】", "");
     }
 
