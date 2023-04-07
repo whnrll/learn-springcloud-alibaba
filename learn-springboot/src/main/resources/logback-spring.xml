@@ -31,7 +31,7 @@
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <!--此日志appender是为开发使用，只配置最底级别，控制台输出的日志级别是大于或等于此级别的日志信息-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>debug</level>
+            <level>info</level>
         </filter>
         <!-- 对日志进行格式化 -->
         <encoder>
@@ -133,7 +133,7 @@
     <!-- level 设置日志输出的级别 -->a
     <!-- logger 的 appender 根据参数 additivity 决定是否向上级logger传递打印信息。-->
     <!-- logger 的级别是其自身定义的级别，和 root 的级别没什么关系。 -->
-    <logger name="org.example" level="debug" additivity="false">
+    <logger name="org.example" level="info" additivity="false">
         <appender-ref ref="CONSOLE-WITH-COLOR"/>
         <appender-ref ref="DEBUG_FILE"/>
         <appender-ref ref="INFO_FILE"/>

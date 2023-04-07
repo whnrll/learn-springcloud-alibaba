@@ -6,6 +6,17 @@ spring:
   profiles:
     active: "@profiles.active@"
 
+  redis:
+    host: bigdata01
+    port: 6379
+    # lettuce 连接池配置（SpringBoot 默认支持的连接池。切换到 Jedis 连接池则需要引入 jedis 依赖）
+    lettuce:
+      pool:
+        min-idle: 5
+        max-idle: 10
+        max-active: 10
+        max-wait: 1000ms
+
 
   # http client pool 配置
   http-client:
