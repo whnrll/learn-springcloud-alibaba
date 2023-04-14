@@ -9,10 +9,7 @@ import java.util.Properties;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.filefilter.FileFileFilter;
-import org.apache.commons.io.filefilter.PrefixFileFilter;
-import org.apache.commons.io.filefilter.SuffixFileFilter;
-import org.apache.commons.io.filefilter.TrueFileFilter;
+import org.apache.commons.io.filefilter.*;
 import org.apache.commons.lang3.StringUtils;
 
 import lombok.extern.slf4j.Slf4j;
@@ -99,6 +96,16 @@ public class FileUtil {
 
         File file = org.apache.commons.io.FileUtils.getFile(dir);
         Collection<File> files = org.apache.commons.io.FileUtils.listFiles(file, new SuffixFileFilter(suffix), TrueFileFilter.INSTANCE);
+        deleteFile(files);
+    }
+
+    public static void deleteFiles(String dir, String fileName) {
+        if (StringUtils.isBlank(dir) || StringUtils.isBlank(fileName)) {
+            return;
+        }
+
+        File file = org.apache.commons.io.FileUtils.getFile(dir);
+        Collection<File> files = org.apache.commons.io.FileUtils.listFiles(file, new NameFileFilter(fileName), TrueFileFilter.INSTANCE);
         deleteFile(files);
     }
 

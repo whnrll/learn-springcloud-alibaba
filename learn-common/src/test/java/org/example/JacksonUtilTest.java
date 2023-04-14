@@ -81,4 +81,11 @@ public class JacksonUtilTest {
         List<Student> students = JacksonUtil.toObject(json, listTypeReference);
         System.out.println(students);
     }
+
+    @org.junit.jupiter.api.Test
+    public void deserializeArray() {
+        String[] obj = {"{\"name\": \"xt1\"}", "{\"name\": \"xt2\"}"};
+        List<Student> students = org.example.util.JacksonUtil.fromJSON(obj, Student.class);
+        System.out.println(students);
+    }
 }

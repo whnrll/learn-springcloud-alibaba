@@ -53,9 +53,14 @@ public class FileTest {
     }
 
     @Test
+    public void deleteFiles() {
+        FileUtil.deleteFiles("D:\\学习资料\\视频\\Java工程师面试突击第1季", "下载必看.txt");
+    }
+
+    @Test
     public void deleteFilesWithSuffix() throws Exception {
-        String[] deleteSuffix = new String[]{".ev4.mp4", ".url"};
-        String srcDir = "G:\\下载\\MongoDB企业级分片集群搭建";
+        String[] deleteSuffix = new String[]{".url"};
+        String srcDir = "D:\\学习资料\\视频\\Java工程师面试突击第1季";
         FileUtil.deleteFilesWithSuffix(srcDir, deleteSuffix);
     }
 

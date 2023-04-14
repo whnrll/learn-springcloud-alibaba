@@ -2,6 +2,8 @@ package org.example.util;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -13,6 +15,8 @@ import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.ss.formula.functions.T;
+import org.example.vo.Student;
 
 /**
  * 描述：json 工具类
@@ -115,6 +119,20 @@ public class JacksonUtil {
         }
     }
 
+    public static <T> List<T> fromJSON(Object object, Class<T> clazz) {
+        if (Objects.isNull(object)) {
+            return null;
+        }
+
+
+        try {
+            TypeReference<List<T>> typeReference = new TypeReference<List<T>>() {};
+            return MAPPER.readValue(MAPPER.writeValueAsString(object), typeReference);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**
      * Json 转 Object
      */
@@ -123,7 +141,7 @@ public class JacksonUtil {
             if (StringUtils.isEmpty(text) || typeReference == null) {
                 return null;
             }
-            return (T)(typeReference.getType().equals(String.class) ? text : MAPPER.readValue(text, typeReference));
+            return (typeReference.getType().equals(String.class) ? (T) text : MAPPER.readValue(text, typeReference));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

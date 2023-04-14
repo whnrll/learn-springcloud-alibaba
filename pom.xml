@@ -119,6 +119,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <exclusions>
+                <!-- 排除 junit4 引擎 -->
                 <exclusion>
                     <artifactId>junit-vintage-engine</artifactId>
                     <groupId>org.junit.vintage</groupId>
