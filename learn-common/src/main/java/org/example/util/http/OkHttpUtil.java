@@ -16,7 +16,6 @@ import com.alibaba.fastjson.JSON;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
-import org.example.util.JacksonUtil;
 
 @Slf4j
 @Data
@@ -51,14 +50,9 @@ public class OkHttpUtil {
     /**
      * 同步post请求
      */
-    public Response httpPostSync(HttpRequestParam param) {
+    public Response httpPostSync(HttpRequestParam param) throws IOException {
         Request.Builder request = this.httpPost(param);
-        try (Response response = client.newCall(request.build()).execute()) {
-            return response;
-        } catch (IOException e) {
-            log.error("发送请求异常, url:{};{}", param.getUrl(), e);
-            return null;
-        }
+        return client.newCall(request.build()).execute();
     }
 
     /**
@@ -72,14 +66,9 @@ public class OkHttpUtil {
     /**
      * 同步get请求
      */
-    public Response httpGetSync(HttpRequestParam param) {
+    public Response httpGetSync(HttpRequestParam param) throws IOException {
         Request.Builder request = this.httpGet(param);
-        try (Response response = client.newCall(request.build()).execute()) {
-            return response;
-        } catch (IOException e) {
-            log.error("发送请求异常, url:{};{}", param.getUrl(), e);
-            return null;
-        }
+        return client.newCall(request.build()).execute();
     }
 
     public void httpGetAsync(HttpRequestParam param, OkHttpCallback callback) {
@@ -202,8 +191,6 @@ public class OkHttpUtil {
 
         request.url(urlBuilder.build());
     }
-
-
 
     /**
      * 设置请求头
